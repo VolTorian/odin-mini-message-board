@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Message Board</title>
+
+    </head>
+    <body>
+        <h2><%= title %></h2>
+        <ol>
+            <% messages.forEach((message) => { %>
+                <li>
+                    <h4><%= message.user %> - <%= message.added %></h4>
+                    <div><%= message.text %></div>
+                </li>
+            <% }); %>
+        </ol>
+    </body>
+</html>
