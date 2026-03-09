@@ -5,10 +5,28 @@
     </head>
     <body>
         <form method="POST" action="/new">
+            <% if (locals.nameErrors) {%>
+                <ul>
+                    <% nameErrors.forEach(function(error) { %>
+                        <li><%= error.msg %></li>
+                    <% }); %>
+                </ul>
+            <% } %>
             <label for="name">Name:</label>
             <input id="name" type="text" name="name" required>
+            <br>
+            <br>
+            <% if (locals.messageErrors) {%>
+                <ul>
+                    <% messageErrors.forEach(function(error) { %>
+                        <li><%= error.msg %></li>
+                    <% }); %>
+                </ul>
+            <% } %>
             <label for="message">Message:</label>
             <textarea id="message" name="message" cols="30" rows="10" required></textarea>
+            <br>
+            <br>
             <input type="submit" value="Submit">
         </form>         
     </body>
