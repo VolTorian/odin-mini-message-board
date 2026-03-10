@@ -1,4 +1,5 @@
 const { body, validationResult, matchedData } = require("express-validator");
+const db = require("../db/queries");
 
 const validateName = [
     body("name").trim()
@@ -23,8 +24,12 @@ messageCreatePost = [
                 messageErrors: errors.array().filter((error) => error.path === "message"),
             });
         }
-        const { name } = matchedData(req);
-        console.log("test username " + name);
+        const { name, message } = matchedData(req);
+        // console.log("test username " + name);
+        console.log(matchedData(req))
+        console.log(new Date().toISOString())
+        await db.createMessage(name, message);
+        res.redirect("/");
     }
 ]
 
