@@ -18,16 +18,12 @@ messageCreatePost = [
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            // console.log(errors.array())
             return res.status(400).render("form", {
                 nameErrors: errors.array().filter((error) => error.path === "name"),
                 messageErrors: errors.array().filter((error) => error.path === "message"),
             });
         }
         const { name, message } = matchedData(req);
-        // console.log("test username " + name);
-        console.log(matchedData(req))
-        console.log(new Date().toISOString())
         await db.createMessage(name, message);
         res.redirect("/");
     }
