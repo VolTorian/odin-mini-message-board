@@ -17,7 +17,7 @@ const SQL = `
 async function main() {
     console.log("seeding...");
     const client = new Client({
-        connectionString: `postgresql://${process.env.USER}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.PSQL_PORT}/${process.env.DATABASE}`,
+        connectionString: `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`,
     });
     await client.connect();
     await client.query(SQL);
